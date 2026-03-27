@@ -1,0 +1,12 @@
+# PyCharm 的本地工程配置
+.idea/
+
+# 日志文件本身一般不要上传
+logs/
+
+# 避免把密钥和日志传到 GitHub
+.env
+
+__pycache__/
+
+*.pyc
