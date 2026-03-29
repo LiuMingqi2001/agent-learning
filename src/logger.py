@@ -17,7 +17,7 @@ def setup_logger(name: str = "agent_learning") -> logging.Logger:
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
-    file_handler = logging.FileHandler(log_dir / "agent_learning.log", encoding="utf-8")
+    file_handler = logging.FileHandler(log_dir / "app.log", encoding="utf-8")
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
 

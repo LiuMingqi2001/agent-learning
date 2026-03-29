@@ -8,16 +8,18 @@ load_dotenv()
 
 @dataclass
 class Settings:
-    provider: str = os.getenv("PROVIDER", "openai")
-    model: str = os.getenv("MODEL", "gpt-4.1-mini")
+    provider: str = os.getenv("PROVIDER", "qwen")
+    model: str = os.getenv("MODEL", "qwen-turbo")
     api_key: str = os.getenv("API_KEY", "")
-    base_url: str | None = os.getenv("BASE_URL") or None
-    temperature: float = float(os.getenv("TEMPERATURE", "0"))
+    base_url: str = os.getenv(
+        "BASE_URL",
+        "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    )
+    use_chat_completions: bool = os.getenv("USE_CHAT_COMPLETIONS", "0") == "1"
+    disable_tracing: bool = os.getenv("DISABLE_TRACING", "1") == "1"
     timezone: str = os.getenv("TIMEZONE", "Asia/Shanghai")
+    default_weather_city: str = os.getenv("WEATHER_CITY", "Chengdu")
 
 
 def get_settings() -> Settings:
-    settings = Settings()
-    if not settings.api_key:
-        raise ValueError("API_KEY 未配置，请检查 .env 文件。")
-    return settings
+    return Settings()
